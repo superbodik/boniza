@@ -254,3 +254,6 @@ footer p {
 .checkout-btn:hover, .viber-btn:hover {
     background-color: #264653;
 }
+.hidden {
+    display: none;
+}

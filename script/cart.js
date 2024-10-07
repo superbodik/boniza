@@ -1,13 +1,18 @@
-// Загрузка корзины из локального хранилища
 window.onload = function() {
     loadCartFromStorage();
+    cartIcon = document.getElementById('cart-icon'); // Инициализация cartIcon здесь
+    cartPopup = document.getElementById('cart-popup'); // Инициализация cartPopup
+    cartCount = document.getElementById('cart-count'); // Инициализация cartCount
 };
 
+// Объявляем переменные
 let cart = [];
-let cartPopup = document.getElementById('cart-popup');
+let cartPopup = null;
 let cartItemsList = document.getElementById('cart-items');
 let cartTotal = document.getElementById('cart-total');
-let cartCount = document.getElementById('cart-count');
+let cartCount = null; // Объявляем, но не инициализируем
+let cartIcon = null;
+const cartIconImage = '../img/cart.png'; // Путь к изображению
 
 // Функция для переключения видимости всплывающего окна корзины
 function toggleCartPopup() {
@@ -44,7 +49,7 @@ function updateCartUI() {
 
     cart.forEach(item => {
         const li = document.createElement('li');
-        li.textContent = `${item.name} - ${item.quantity} грам - ${item.price * item.quantity / 1000} грн`;
+        li.textContent = `${item.name} - ${item.quantity} грам - ${(item.price * item.quantity / 1000).toFixed(2)} грн`;
         cartItemsList.appendChild(li);
         total += item.price * item.quantity / 1000;
     });
@@ -83,8 +88,13 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
         const productPrice = parseFloat(product.getAttribute('data-price'));
         const quantity = parseInt(product.querySelector('input[type="number"]').value);
 
+        if (isNaN(quantity) || quantity <= 0) {
+            alert('Пожалуйста, введите корректное количество товара.');
+            return;
+        }
+
         addToCart(productId, productName, productPrice, quantity);
-        alert(`Товар "${productName}" додано до корзини!`);
+        alert(`Товар "${productName}" добавлен в корзину!`);
     });
 });
 
