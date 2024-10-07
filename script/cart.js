@@ -1,18 +1,24 @@
+// cart.js
+
 window.onload = function() {
-    loadCartFromStorage();
-    cartIcon = document.getElementById('cart-icon'); // Инициализация cartIcon здесь
-    cartPopup = document.getElementById('cart-popup'); // Инициализация cartPopup
-    cartCount = document.getElementById('cart-count'); // Инициализация cartCount
+    // Инициализация элементов после загрузки DOM
+    cartPopup = document.getElementById('cart-popup');
+    cartItemsList = document.getElementById('cart-items');
+    cartTotal = document.getElementById('cart-total');
+    cartCount = document.getElementById('cart-count');
+    cartIcon = document.getElementById('cart-icon');
+
+    loadCartFromStorage(); // Загрузка корзины после инициализации
 };
 
 // Объявляем переменные
 let cart = [];
 let cartPopup = null;
-let cartItemsList = document.getElementById('cart-items');
-let cartTotal = document.getElementById('cart-total');
-let cartCount = null; // Объявляем, но не инициализируем
+let cartItemsList = null;
+let cartTotal = null;
+let cartCount = null;
 let cartIcon = null;
-const cartIconImage = '../img/cart.png'; // Путь к изображению
+const cartIconImage = 'img/cart.png';
 
 // Функция для переключения видимости всплывающего окна корзины
 function toggleCartPopup() {

@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сир від мами</title>
     <link rel="stylesheet" href="./Style/style.css">
+    <style>
+        /* Пример стилей для скрытия/показ всплывающего окна корзины */
+        .hidden {
+            display: none;
+        }
+        #cart-popup {
+            position: absolute;
+            right: 20px;
+            top: 60px;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .cart-container {
+            position: relative;
+        }
+    </style>
 </head>
 <body>
     <!-- Шапка сайту -->
