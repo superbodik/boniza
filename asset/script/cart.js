@@ -109,9 +109,10 @@ document.getElementById('checkout-button').addEventListener('click', function() 
     alert('Оформлення замовлення! Тут можна буде додати серверну логіку для надсилання замовлення.');
 });
 
+
 // Переход в Viber
 document.getElementById('viber-button').addEventListener('click', function() {
-    window.location.href = 'viber://add?number=%2B380664680114';
+    window.location.href = 'viber://chat?number=%2B380664680114';
 });
 
 // Функция для установки куки
